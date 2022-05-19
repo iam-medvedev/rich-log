@@ -171,7 +171,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@parcel/core@npm:2.5.0":
+"@parcel/core@npm:2.5.0, @parcel/core@npm:latest":
   version: 2.5.0
   resolution: "@parcel/core@npm:2.5.0"
   dependencies:
@@ -921,7 +921,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18":
+"@types/react-dom@npm:^18.0.4":
+  version: 18.0.4
+  resolution: "@types/react-dom@npm:18.0.4"
+  dependencies:
+    "@types/react": "*"
+  checksum: decde42d02a90ac2fe94fd6bfd9c78d002c03762a2d940df9422bf61af89c03d05e2113fd55fe45521fe27fa872a79dfd654b7d6b89652b455425efdcb763c58
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^18.0.9":
   version: 18.0.9
   resolution: "@types/react@npm:18.0.9"
   dependencies:
@@ -2354,6 +2363,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"preact@npm:^10.7.2":
+  version: 10.7.2
+  resolution: "preact@npm:10.7.2"
+  checksum: 2f0655e0430f1c6927b40cb4abffb2c0ee4fe63e3201d44e37d0992c0ab534346f206cf23c0405572b70908e3eba2f7f60ab8e4531f409ebcbc35af06920cd60
+  languageName: node
+  linkType: hard
+
 "promise-inflight@npm:^1.0.1":
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
@@ -2375,6 +2391,18 @@ __metadata:
   version: 2.1.1
   resolution: "punycode@npm:2.1.1"
   checksum: 823bf443c6dd14f669984dea25757b37993f67e8d94698996064035edd43bed8a5a17a9f12e439c2b35df1078c6bec05a6c86e336209eb1061e8025c481168e8
+  languageName: node
+  linkType: hard
+
+"react-dom@npm:^18.1.0":
+  version: 18.1.0
+  resolution: "react-dom@npm:18.1.0"
+  dependencies:
+    loose-envify: ^1.1.0
+    scheduler: ^0.22.0
+  peerDependencies:
+    react: ^18.1.0
+  checksum: bb0d48eeb0b297c79c2a03978baa29f5b3ff7ba3d070b21e34c9af1a6e7fdf0ca8b8d73e41f9214d91ad40eeb6d1f3559f884cbbc338713374a51320637c23df
   languageName: node
   linkType: hard
 
@@ -2426,13 +2454,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rich-log-preact-example@workspace:packages/preact-example":
+  version: 0.0.0-use.local
+  resolution: "rich-log-preact-example@workspace:packages/preact-example"
+  dependencies:
+    "@parcel/core": latest
+    parcel: latest
+    preact: ^10.7.2
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "rich-log-react-example@workspace:packages/react-example":
   version: 0.0.0-use.local
   resolution: "rich-log-react-example@workspace:packages/react-example"
   dependencies:
-    "@types/react": ^18
+    "@parcel/core": latest
+    "@types/react": ^18.0.9
+    "@types/react-dom": ^18.0.4
     parcel: latest
     react: ^18.1.0
+    react-dom: ^18.1.0
     typescript: ^4.6.4
   languageName: unknown
   linkType: soft
@@ -2441,6 +2483,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "rich-log@workspace:packages/rich-log"
   dependencies:
+    "@parcel/core": latest
     "@parcel/packager-ts": 2.5.0
     "@parcel/transformer-typescript-types": 2.5.0
     csstype: ^3.1.0
@@ -2478,6 +2521,15 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "scheduler@npm:0.22.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: a8ef5cab769c020cd6382ad9ecc3f72dbde56a50a36639b3a42ad9c11f7724f03700bcad373044059b8067d4a6365154dc7c0ca8027ef20ff4900cf58a0fc2c5
   languageName: node
   linkType: hard
 

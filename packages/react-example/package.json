@@ -4,11 +4,18 @@
     "start": "parcel ./index.html"
   },
   "devDependencies": {
-    "@types/react": "^18",
+    "@parcel/core": "latest",
     "parcel": "latest",
     "typescript": "^4.6.4"
   },
+  "resolutions": {
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4"
+  },
   "dependencies": {
-    "react": "^18.1.0"
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   }
 }

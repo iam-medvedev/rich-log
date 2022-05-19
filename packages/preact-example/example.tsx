@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { createRoot } from "react-dom/client";
+import { render } from "preact";
+import { useState } from "preact/compat";
 import RichLog from "rich-log";
 
 function App() {
@@ -35,5 +35,4 @@ function App() {
   );
 }
 
-const root = createRoot(document.getElementById("root"));
-root.render(<App />);
+render(<App />, document.getElementById("root"));

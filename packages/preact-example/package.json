@@ -1,0 +1,19 @@
+{
+  "name": "rich-log-preact-example",
+  "scripts": {
+    "start": "parcel ./index.html"
+  },
+  "devDependencies": {
+    "@parcel/core": "latest",
+    "parcel": "latest",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "preact": "^10.7.2"
+  },
+  "alias": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat",
+    "react/jsx-runtime": "preact/jsx-runtime"
+  }
+}

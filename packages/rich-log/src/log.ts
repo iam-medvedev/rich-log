@@ -1,4 +1,4 @@
-import { RichLogText } from "./text";
+import { Text } from "./text";
 
 type JSXComponent = {
   type: Function;
@@ -7,7 +7,7 @@ type JSXComponent = {
 
 /** Determines if the component is a RichLog instance. */
 function isRichLogComponent(component: JSXComponent) {
-  return component.type === RichLogText;
+  return component.type === Text;
 }
 
 /** Creates a RichLog instance. */

@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "esModuleInterop": true
