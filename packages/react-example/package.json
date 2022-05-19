@@ -1,0 +1,14 @@
+{
+  "name": "rich-log-react-example",
+  "scripts": {
+    "start": "parcel ./index.html"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "parcel": "latest",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "react": "^18.1.0"
+  }
+}

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { RichLogText } from "../src/text";
-import { log } from "../src";
+import { RichLogText } from "../rich-log/src/text";
+import { log } from "../rich-log/src";
 
 log(
   <RichLogText
