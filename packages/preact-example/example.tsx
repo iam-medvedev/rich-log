@@ -56,12 +56,26 @@ function App() {
     );
   }
 
+  function sendTableLog() {
+    RichLog.log(
+      <RichLog.Table
+        data={[
+          { type: "Boolean", value: true },
+          { type: "String", value: "string" },
+          { type: "Number", value: 1 },
+          { type: "Object", value: { test: "object test" } },
+        ]}
+      />
+    );
+  }
+
   return (
     <>
       <h1>Preact Example</h1>
 
       <button onClick={sendTextLog}>Send styled console.log</button>
       <button onClick={sendGroupLog}>Send styled console.group</button>
+      <button onClick={sendTableLog}>Send console.table</button>
 
       {isClicked ? (
         <p>
