@@ -1,5 +1,15 @@
-import { generateComponentResult, RichLogComponent } from "./styles";
+import type { RichLogComponent } from "./component";
+import { generateStyledString, RichLogStyles } from "./styles";
 
-export const Text: RichLogComponent = ({ children, ...styles }) => {
-  return generateComponentResult(children, styles);
+type RichLogTextProps = RichLogStyles & {
+  children: string;
+};
+
+export const Text: RichLogComponent<RichLogTextProps> = ({
+  children,
+  ...styles
+}) => {
+  console.log(...generateStyledString(children, styles));
+
+  return null;
 };

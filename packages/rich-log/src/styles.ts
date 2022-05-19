@@ -34,18 +34,7 @@ const knownProperties = [
 
 type KnownProperties = typeof knownProperties[number];
 
-type RichLogStyles = Pick<StandardProperties, KnownProperties>;
-
-type RichLogComponentProps = RichLogStyles & {
-  children?: string;
-};
-
-// FIXME: null here is for compatibility with a ReactElement
-type RichLogComponentReturnType = null;
-
-export type RichLogComponent = (
-  props: RichLogComponentProps
-) => RichLogComponentReturnType;
+export type RichLogStyles = Pick<StandardProperties, KnownProperties>;
 
 /** Determines if a property is known to us */
 function isKnownProperty(item: string): item is KnownProperties {
@@ -67,12 +56,11 @@ function generateCSS(styles: RichLogStyles) {
 }
 
 /** Generates strings for console fn */
-export const generateComponentResult = (
+export const generateStyledString = (
   children: string,
   styles: RichLogStyles
 ) => {
   const css = generateCSS(styles);
 
-  // FIXME: remove type casting
-  return [`%c${children}`, css] as RichLogComponentReturnType;
+  return [`%c${children}`, css];
 };

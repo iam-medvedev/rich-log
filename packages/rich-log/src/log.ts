@@ -1,23 +1,10 @@
-import { Text } from "./text";
-
-type JSXComponent = {
-  type: Function;
-  props: Object;
-};
-
-/** Determines if the component is a RichLog instance. */
-function isRichLogComponent(component: JSXComponent) {
-  return component.type === Text;
-}
+import { JSXComponent, validateRichLogComponent } from "./component";
 
 /** Creates a RichLog instance. */
 function logger(type: "log" | "error" | "info", content: JSXComponent) {
-  if (!isRichLogComponent(content)) {
-    throw new Error("[RichLog] Only RichLog component can be used.");
-  }
+  validateRichLogComponent(content);
 
-  const result = content.type(content.props);
-  console[type](...result);
+  content.type(content.props);
 }
 
 /** Rich Log */
