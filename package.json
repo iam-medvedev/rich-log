@@ -7,6 +7,8 @@
   "scripts": {
     "build": "yarn workspace rich-log build",
     "dev": "yarn workspace rich-log dev",
+    "test": "yarn workspace rich-log test",
+    "test:ci": "yarn workspace rich-log test:ci",
     "example-react": "yarn workspace rich-log-react-example start",
     "example-preact": "yarn workspace rich-log-preact-example start"
   }

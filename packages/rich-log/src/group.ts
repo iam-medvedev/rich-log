@@ -22,6 +22,9 @@ export const Group: RichLogComponent<RichLogGroupProps> = ({
       validateRichLogComponent(child);
       child.type(child.props);
     }
+  } else {
+    validateRichLogComponent(children);
+    children.type(children.props);
   }
 
   console.groupEnd();

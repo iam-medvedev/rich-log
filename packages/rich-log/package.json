@@ -9,13 +9,19 @@
   "types": "dist/types.d.ts",
   "scripts": {
     "build": "parcel build",
-    "dev": "parcel watch"
+    "dev": "parcel watch",
+    "test": "jest --watch",
+    "test:ci": "jest --watch"
   },
   "devDependencies": {
     "@parcel/core": "latest",
     "@parcel/packager-ts": "2.5.0",
     "@parcel/transformer-typescript-types": "2.5.0",
+    "@testing-library/react": "^13.2.0",
+    "@types/jest": "^27.5.1",
+    "jest": "^28.1.0",
     "parcel": "latest",
+    "ts-jest": "^28.0.2",
     "typescript": "^4.6.4"
   },
   "dependencies": {
