@@ -1,0 +1,3 @@
+# Rich Log
+
+WIP
