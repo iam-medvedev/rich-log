@@ -1,7 +1,7 @@
 import type { RichLogComponent } from "./component";
 
 type RichLogTableProps = {
-  data: any[] | object;
+  data: unknown[] | object;
 };
 
 export const Table: RichLogComponent<RichLogTableProps> = ({ data }) => {
