@@ -1,7 +1,25 @@
 {
   "name": "rich-log",
   "version": "1.0.0",
-  "license": "MIT",
+  "description": "JSX + console.log = RichLog",
+  "repository": "https://github.com/iam-medvedev/rich-log.git",
+  "homepage": "https://github.com/iam-medvedev/rich-log#readme",
+  "bugs": "https://github.com/iam-medvedev/rich-log/issues",
+  "author": "Ilya Medvedev <ilya@medvedev.im>",
+  "license": "WTFPL",
+  "files": [
+    "dist/*",
+    "package.json"
+  ],
+  "keywords": [
+    "jsx",
+    "console",
+    "rich",
+    "log",
+    "styled",
+    "logging",
+    "css"
+  ],
   "packageManager": "yarn@3.2.1",
   "source": "src/index.ts",
   "main": "dist/main.js",
@@ -13,6 +31,10 @@
     "test": "jest --watch",
     "test:ci": "jest --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "csstype": "^3.1.0",
+    "param-case": "^3.0.4"
   },
   "devDependencies": {
     "@parcel/core": "latest",
@@ -35,9 +57,5 @@
     "semantic-release": "^19.0.2",
     "ts-jest": "^28.0.2",
     "typescript": "^4.6.4"
-  },
-  "dependencies": {
-    "csstype": "^3.1.0",
-    "param-case": "^3.0.4"
   }
 }
