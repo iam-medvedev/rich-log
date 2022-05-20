@@ -1,4 +1,5 @@
 {
+  "branches": ["main"],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -10,7 +11,10 @@
           { "type": "perf", "release": "patch" },
           { "type": "refactor", "release": "patch" },
           { "type": "style", "release": "patch" },
-          { "type": "chore", "release": "patch" }
+          { "type": "chore", "release": "patch" },
+          { "type": "improvement", "release": "patch" },
+          { "type": "docs", "release": "patch" },
+          { "type": "ci", "release": "patch" }
         ]
       }
     ],

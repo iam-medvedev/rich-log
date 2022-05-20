@@ -39,6 +39,10 @@ RichLog.log(
 );
 ```
 
+Output:
+
+<img alt="rich-log preview" width="220" src="./readme-assets/1.png" />
+
 Thats it!
 
 ## Benefits ✨
@@ -63,6 +67,10 @@ RichLog.log(
 );
 ```
 
+Output:
+
+<img alt="rich-log preview" width="130" src="./readme-assets/2.png" />
+
 ### `<RichLog.Fragment />`
 
 If you want to display several components at once, you can nest them in a fragment.
@@ -70,11 +78,15 @@ If you want to display several components at once, you can nest them in a fragme
 ```tsx
 RichLog.log(
   <RichLog.Fragment>
-    <RichLog.Text>My name is:</RichLog.Text>
+    <RichLog.Text>My name is: </RichLog.Text>
     <RichLog.Text fontWeight="bold">Slim Shady</RichLog.Text>
   </RichLog.Fragment>,
 );
 ```
+
+Output:
+
+<img alt="rich-log preview" width="184" src="./readme-assets/3.png" />
 
 If you want to separate text lines, you use the `separate`-prop:
 
@@ -87,6 +99,10 @@ RichLog.log(
 );
 ```
 
+Output:
+
+<img alt="rich-log preview" width="120" src="./readme-assets/4.png" />
+
 ### `<RichLog.Table />`
 
 Component for rendering data to table.
@@ -94,6 +110,10 @@ Component for rendering data to table.
 ```tsx
 RichLog.log(<RichLog.Table data={{ foo: true, bar: 1 }} />);
 ```
+
+Output:
+
+<img alt="rich-log preview" width="487" src="./readme-assets/5.png" />
 
 ### `<RichLog.Group />`
 
@@ -112,6 +132,10 @@ RichLog.log(
   </RichLog.Group>,
 );
 ```
+
+Output:
+
+<img alt="rich-log preview" width="221" src="./readme-assets/6.png" />
 
 ### `<RichLog.SVG />`
 
@@ -141,6 +165,10 @@ RichLog.log(
   />,
 );
 ```
+
+Output:
+
+<img alt="rich-log preview" width="107" src="./readme-assets/7.png" />
 
 ## TODO
 
