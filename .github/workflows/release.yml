@@ -22,7 +22,7 @@ jobs:
         run: yarn build
 
       - name: Copy readme
-        run: cp ./README.md ./packages/rich-log/
+        run: cp -R ./README.md ./readme-assets ./packages/rich-log/
 
       - name: Release
         env:
