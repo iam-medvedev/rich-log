@@ -1,5 +1,6 @@
 import type { RichLogComponent } from './component';
 import { generateStyledString, RichLogStyles } from './styles';
+import { getIntVal, isSafari } from './utils';
 
 const knownProperties = [
   'background',
@@ -28,32 +29,32 @@ export type RichLogBoxProps = RichLogBoxStyles & {
   separate?: boolean;
 };
 
-// TODO: в сафари не работает
-function getWidth(val: string | number) {
-  const width = typeof val === 'number' ? val : parseInt(val);
-  const minWidth = 7;
-  const newWidth = Math.max(0, width - minWidth);
-
-  return `${newWidth}px`;
-}
-
 function prepareBoxStyles(styles: RichLogBoxStyles): RichLogStyles {
-  const result = {
-    fontSize: '1px',
-  };
+  const result: RichLogStyles = {};
 
-  for (const key in styles) {
-    switch (key) {
-      case 'width':
-        result['paddingRight'] = getWidth(styles[key]);
-        break;
-      case 'height':
+  if (isSafari()) {
+    // Styling a Box in Safari is a little tricky
+    result.fontSize = '1px';
+
+    for (const key in styles) {
+      if (key === 'width') {
+        result['paddingRight'] = `${getIntVal(styles[key])}px`;
+      } else if (key === 'height') {
         result['lineHeight'] = styles[key];
-        break;
-
-      default:
+      } else {
         result[key] = styles[key];
-        break;
+      }
+    }
+  } else {
+    result.fontSize = '1px';
+    for (const key in styles) {
+      if (key === 'width') {
+        result['paddingRight'] = styles[key];
+      } else if (key === 'height') {
+        result['lineHeight'] = styles[key];
+      } else {
+        result[key] = styles[key];
+      }
     }
   }
 
@@ -62,7 +63,6 @@ function prepareBoxStyles(styles: RichLogBoxStyles): RichLogStyles {
 
 export const Box: RichLogComponent<RichLogBoxProps> = ({ separate = false, ...objectStyles }) => {
   const { text, styles } = generateStyledString(' ', prepareBoxStyles(objectStyles));
-  console.log({ text, styles });
 
   return {
     type: 'log',

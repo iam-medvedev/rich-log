@@ -3,6 +3,7 @@ import { Group } from './group';
 import { Table } from './table';
 import { Fragment } from './fragment';
 import { Box } from './box';
+import { SVG } from './svg';
 
 export type RichLogComponentResult =
   | { type: 'log'; separate: boolean; text: string[]; styles: string[] }
@@ -18,7 +19,7 @@ export type JSXComponent = {
   props: Object;
 };
 
-const knownComponents: Function[] = [Text, Group, Table, Fragment, Box];
+const knownComponents: Function[] = [Text, Group, Table, Fragment, Box, SVG];
 
 /** Determines if the component is a RichLog instance. */
 export function validateRichLogComponent(component?: JSXComponent) {

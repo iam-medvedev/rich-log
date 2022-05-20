@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import RichLog from '../';
 
 const logMock = jest.fn();
@@ -28,7 +31,7 @@ const styles = {
 };
 
 const compiledText = `%c${text}`;
-const compiledStyles = `color: ${styles.color};background: ${styles.background};border-radius: ${styles.borderRadius};`;
+const compiledStyles = `color: ${styles.color}; background: ${styles.background}; border-radius: ${styles.borderRadius};`;
 
 it('Text', () => {
   RichLog.log(<RichLog.Text {...styles}>{text}</RichLog.Text>);
@@ -102,4 +105,34 @@ it('Table', () => {
   ];
   RichLog.log(<RichLog.Table data={data} />);
   expect(tableMock).toBeCalledWith(data);
+});
+
+it('SVG', () => {
+  RichLog.log(
+    <RichLog.SVG
+      height="60px"
+      width="60px"
+      value='<svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="white"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          <line x1="12" y1="9" x2="12" y2="13"></line>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>'
+    />,
+  );
+
+  expect(logMock).toBeCalledWith(
+    '%c ',
+    "font-size: 1px; background-image: url('data:image/svg+xml;base64,PHN2ZwogICAgICAgICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICAgICAgICAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiCiAgICAgICAgICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgICAgICAgICB3aWR0aD0iMjQiCiAgICAgICAgICBoZWlnaHQ9IjI0IgogICAgICAgICAgc3Ryb2tlPSJ3aGl0ZSIKICAgICAgICAgIHN0cm9rZVdpZHRoPSIyIgogICAgICAgICAgZmlsbD0ibm9uZSIKICAgICAgICAgIHN0cm9rZUxpbmVjYXA9InJvdW5kIgogICAgICAgICAgc3Ryb2tlTGluZWpvaW49InJvdW5kIgogICAgICAgID4KICAgICAgICAgIDxwYXRoIGQ9Ik0xMC4yOSAzLjg2TDEuODIgMThhMiAyIDAgMCAwIDEuNzEgM2gxNi45NGEyIDIgMCAwIDAgMS43MS0zTDEzLjcxIDMuODZhMiAyIDAgMCAwLTMuNDIgMHoiPjwvcGF0aD4KICAgICAgICAgIDxsaW5lIHgxPSIxMiIgeTE9IjkiIHgyPSIxMiIgeTI9IjEzIj48L2xpbmU+CiAgICAgICAgICA8bGluZSB4MT0iMTIiIHkxPSIxNyIgeDI9IjEyLjAxIiB5Mj0iMTciPjwvbGluZT4KICAgICAgICA8L3N2Zz4='); background-size: contain; background-position: center center; background-repeat: no-repeat; padding-top: 60px; padding-right: 60px;",
+  );
 });

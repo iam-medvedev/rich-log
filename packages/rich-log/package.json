@@ -53,6 +53,7 @@
     "@typescript-eslint/parser": "^5.25.0",
     "eslint": "^8.15.0",
     "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "parcel": "latest",
     "semantic-release": "^19.0.2",
     "ts-jest": "^28.0.2",
