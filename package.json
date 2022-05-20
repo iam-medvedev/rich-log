@@ -11,6 +11,28 @@
     "test:ci": "yarn workspace rich-log test:ci",
     "lint": "yarn workspace rich-log lint",
     "example-react": "yarn workspace rich-log-react-example start",
-    "example-preact": "yarn workspace rich-log-preact-example start"
+    "example-preact": "yarn workspace rich-log-preact-example start",
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
+  },
+  "lint-staged": {
+    "*.{ts,tsx,json}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
