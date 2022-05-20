@@ -1,5 +1,5 @@
-import type { StandardProperties } from "csstype";
-import { paramCase } from "param-case";
+import type { StandardProperties } from 'csstype';
+import { paramCase } from 'param-case';
 
 /**
  * List of known css-properties
@@ -9,27 +9,27 @@ import { paramCase } from "param-case";
  * https://trac.webkit.org/browser/trunk/Source/WebInspectorUI/UserInterface/Views/ConsoleMessageView.js#L801
  */
 const knownProperties = [
-  "background",
-  "border",
-  "borderRadius",
-  "boxShadow",
-  "color",
-  "cursor",
-  "display",
-  "font",
-  "fontSize",
-  "fontWeight",
-  "fontStyle",
-  "fontFamily",
-  "fontVariant",
-  "lineHeight",
-  "margin",
-  "outline",
-  "padding",
-  "textTransform",
-  "whiteSpace",
-  "wordSpacing",
-  "wordBreak",
+  'background',
+  'border',
+  'borderRadius',
+  'boxShadow',
+  'color',
+  'cursor',
+  'display',
+  'font',
+  'fontSize',
+  'fontWeight',
+  'fontStyle',
+  'fontFamily',
+  'fontVariant',
+  'lineHeight',
+  'margin',
+  'outline',
+  'padding',
+  'textTransform',
+  'whiteSpace',
+  'wordSpacing',
+  'wordBreak',
 ] as const;
 
 type KnownProperties = typeof knownProperties[number];
@@ -52,14 +52,11 @@ function generateCSS(styles: RichLogStyles) {
     }
   }
 
-  return cssArray.join("");
+  return cssArray.join('');
 }
 
 /** Generates strings for console fn */
-export const generateStyledString = (
-  children: string,
-  styles: RichLogStyles
-) => {
+export const generateStyledString = (children: string, styles: RichLogStyles) => {
   const css = generateCSS(styles);
 
   return [`%c${children}`, css];

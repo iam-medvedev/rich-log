@@ -1,18 +1,11 @@
-import {
-  JSXComponent,
-  RichLogComponent,
-  validateRichLogComponent,
-} from "./component";
+import { JSXComponent, RichLogComponent, validateRichLogComponent } from './component';
 
 type RichLogGroupProps = {
   header: JSXComponent;
   children?: JSXComponent | JSXComponent[];
 };
 
-export const Group: RichLogComponent<RichLogGroupProps> = ({
-  header,
-  children,
-}) => {
+export const Group: RichLogComponent<RichLogGroupProps> = ({ header, children }) => {
   validateRichLogComponent(header);
 
   console.groupCollapsed(...header.type(header.props));

@@ -1,4 +1,4 @@
-import { JSXComponent, validateRichLogComponent } from "./component";
+import { JSXComponent, validateRichLogComponent } from './component';
 
 /** Rich Log */
 export function log(content: JSXComponent) {

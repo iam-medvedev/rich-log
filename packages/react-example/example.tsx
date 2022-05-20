@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { createRoot } from "react-dom/client";
-import RichLog from "rich-log";
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import RichLog from 'rich-log';
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -9,14 +9,9 @@ function App() {
     setIsClicked(true);
 
     RichLog.log(
-      <RichLog.Text
-        color="green"
-        fontSize="20px"
-        fontFamily="monospace"
-        background="black"
-      >
+      <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
         Hello world. This is styled text.
-      </RichLog.Text>
+      </RichLog.Text>,
     );
   }
 
@@ -26,33 +21,18 @@ function App() {
     RichLog.log(
       <RichLog.Group
         header={
-          <RichLog.GroupHeader
-            color="green"
-            fontSize="20px"
-            fontFamily="monospace"
-            background="black"
-          >
+          <RichLog.GroupHeader color="green" fontSize="20px" fontFamily="monospace" background="black">
             Collapsed group
           </RichLog.GroupHeader>
         }
       >
-        <RichLog.Text
-          color="green"
-          fontSize="20px"
-          fontFamily="monospace"
-          background="black"
-        >
+        <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
           I'am log in group
         </RichLog.Text>
-        <RichLog.Text
-          color="green"
-          fontSize="20px"
-          fontFamily="monospace"
-          background="black"
-        >
+        <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
           Here is the next line
         </RichLog.Text>
-      </RichLog.Group>
+      </RichLog.Group>,
     );
   }
 
@@ -60,12 +40,12 @@ function App() {
     RichLog.log(
       <RichLog.Table
         data={[
-          { type: "Boolean", value: true },
-          { type: "String", value: "string" },
-          { type: "Number", value: 1 },
-          { type: "Object", value: { test: "object test" } },
+          { type: 'Boolean', value: true },
+          { type: 'String', value: 'string' },
+          { type: 'Number', value: 1 },
+          { type: 'Object', value: { test: 'object test' } },
         ]}
-      />
+      />,
     );
   }
 
@@ -86,5 +66,5 @@ function App() {
   );
 }
 
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById('root'));
 root.render(<App />);

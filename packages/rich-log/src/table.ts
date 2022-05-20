@@ -1,4 +1,4 @@
-import type { RichLogComponent } from "./component";
+import type { RichLogComponent } from './component';
 
 type RichLogTableProps = {
   data: unknown[] | object;
