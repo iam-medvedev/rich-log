@@ -9,9 +9,14 @@ function App() {
     setIsClicked(true);
 
     RichLog.log(
-      <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
-        Hello world. This is styled text.
-      </RichLog.Text>,
+      <RichLog.Fragment>
+        <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
+          Hello world.
+        </RichLog.Text>
+        <RichLog.Text color="white" fontSize="15px" fontFamily="monospace" background="black" borderRadius="8px">
+          This is styled text.
+        </RichLog.Text>
+      </RichLog.Fragment>,
     );
   }
 
@@ -21,9 +26,9 @@ function App() {
     RichLog.log(
       <RichLog.Group
         header={
-          <RichLog.GroupHeader color="green" fontSize="20px" fontFamily="monospace" background="black">
+          <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
             Collapsed group
-          </RichLog.GroupHeader>
+          </RichLog.Text>
         }
       >
         <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">

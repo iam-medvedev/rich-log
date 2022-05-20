@@ -1,11 +1,12 @@
 import type { RichLogComponent } from './component';
 
-type RichLogTableProps = {
+export type RichLogTableProps = {
   data: unknown[] | object;
 };
 
 export const Table: RichLogComponent<RichLogTableProps> = ({ data }) => {
-  console.table(data);
-
-  return null;
+  return {
+    type: 'table',
+    data,
+  };
 };

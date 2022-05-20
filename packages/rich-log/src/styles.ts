@@ -56,8 +56,11 @@ function generateCSS(styles: RichLogStyles) {
 }
 
 /** Generates strings for console fn */
-export const generateStyledString = (children: string, styles: RichLogStyles) => {
-  const css = generateCSS(styles);
+export const generateStyledString = (children: string, stylesObject: RichLogStyles) => {
+  const styles = generateCSS(stylesObject);
 
-  return [`%c${children}`, css];
+  return {
+    text: `%c${children}`,
+    styles,
+  };
 };

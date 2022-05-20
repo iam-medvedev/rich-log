@@ -1,11 +1,16 @@
 import { Text } from './text';
 import { Group } from './group';
-import { GroupHeader } from './groupHeader';
 import { Table } from './table';
+import { Fragment } from './fragment';
 
-export type RichLogComponentReturnType = null;
+export type RichLogComponentResult =
+  | { type: 'log'; separate: boolean; text: string[]; styles: string[] }
+  | { type: 'groupCollapsed'; text: string[]; styles: string[] }
+  | { type: 'groupEnd' }
+  | { type: 'table'; data: unknown[] | object }
+  | { type: 'fragment'; childrens: RichLogComponentResult[] };
 
-export type RichLogComponent<Props = {}> = (props: Props) => RichLogComponentReturnType;
+export type RichLogComponent<Props = {}> = (props: Props) => RichLogComponentResult;
 
 export type JSXComponent = {
   type: Function;
@@ -21,7 +26,7 @@ export function validateRichLogComponent(component?: JSXComponent) {
   }
 
   const isRichLogComponent =
-    component.type === Text || component.type === Group || component.type === GroupHeader || component.type === Table;
+    component.type === Text || component.type === Group || component.type === Table || component.type === Fragment;
 
   if (!isRichLogComponent) {
     throw new Error(errorText);
