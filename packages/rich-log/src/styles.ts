@@ -10,6 +10,11 @@ import { paramCase } from 'param-case';
  */
 const knownProperties = [
   'background',
+  'backgroundColor',
+  'backgroundImage',
+  'backgroundPosition',
+  'backgroundRepeat',
+  'backgroundSize',
   'border',
   'borderRadius',
   'boxShadow',
@@ -17,19 +22,30 @@ const knownProperties = [
   'cursor',
   'display',
   'font',
-  'fontSize',
-  'fontWeight',
-  'fontStyle',
   'fontFamily',
+  'fontSize',
+  'fontStyle',
   'fontVariant',
+  'fontWeight',
+  'height',
   'lineHeight',
   'margin',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
   'outline',
   'padding',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
   'textTransform',
+  'textShadow',
   'whiteSpace',
-  'wordSpacing',
+  'width',
   'wordBreak',
+  'wordSpacing',
 ] as const;
 
 type KnownProperties = typeof knownProperties[number];
@@ -52,7 +68,7 @@ function generateCSS(styles: RichLogStyles) {
     }
   }
 
-  return cssArray.join('');
+  return cssArray.join(' ');
 }
 
 /** Generates strings for console fn */

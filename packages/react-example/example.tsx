@@ -34,6 +34,16 @@ function App() {
         <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
           I'am log in group
         </RichLog.Text>
+        <RichLog.Box background="green" borderRadius="50%" width="20px" height="20px" separate />
+        <RichLog.Box
+          backgroundImage="url('https://picsum.photos/80')"
+          backgroundColor="black"
+          backgroundPosition="center"
+          backgroundRepeat="no-repeat"
+          width="40px"
+          height="40px"
+          separate
+        />
         <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
           Here is the next line
         </RichLog.Text>

@@ -3,6 +3,7 @@ import { Text, RichLogTextProps } from './text';
 import { Group, RichLogGroupProps } from './group';
 import { Table, RichLogTableProps } from './table';
 import { Fragment, RichLogFragmentProps } from './fragment';
+import { Box, RichLogBoxProps } from './box';
 
 type RichLogProxyComponent<Props> = (props: Props) => null;
 
@@ -13,6 +14,7 @@ const RichLog = {
   Group: Group as RichLogProxyComponent<RichLogGroupProps>,
   Table: Table as RichLogProxyComponent<RichLogTableProps>,
   Fragment: Fragment as RichLogProxyComponent<RichLogFragmentProps>,
+  Box: Box as RichLogProxyComponent<RichLogBoxProps>,
 };
 
 export default RichLog;

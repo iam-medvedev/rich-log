@@ -2,6 +2,7 @@ import { Text } from './text';
 import { Group } from './group';
 import { Table } from './table';
 import { Fragment } from './fragment';
+import { Box } from './box';
 
 export type RichLogComponentResult =
   | { type: 'log'; separate: boolean; text: string[]; styles: string[] }
@@ -17,6 +18,8 @@ export type JSXComponent = {
   props: Object;
 };
 
+const knownComponents: Function[] = [Text, Group, Table, Fragment, Box];
+
 /** Determines if the component is a RichLog instance. */
 export function validateRichLogComponent(component?: JSXComponent) {
   const errorText = '[RichLog] Only RichLog component can be used.';
@@ -25,10 +28,7 @@ export function validateRichLogComponent(component?: JSXComponent) {
     throw new Error(errorText);
   }
 
-  const isRichLogComponent =
-    component.type === Text || component.type === Group || component.type === Table || component.type === Fragment;
-
-  if (!isRichLogComponent) {
+  if (!knownComponents.includes(component.type)) {
     throw new Error(errorText);
   }
 }
