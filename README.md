@@ -148,3 +148,7 @@ RichLog.log(
 - [ ] Safari support
 - [ ] Styled tables
 - [ ] JSX `<svg />`
+
+## License
+
+`rich-log` is [WTFPL licensed](./LICENSE).
