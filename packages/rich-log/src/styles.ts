@@ -1,5 +1,5 @@
 import type { StandardProperties } from 'csstype';
-import { paramCase } from 'param-case';
+import { convertToParamCase } from './utils';
 
 /**
  * List of known css-properties
@@ -63,7 +63,7 @@ function generateCSS(styles: RichLogStyles) {
 
   for (const key in styles) {
     if (isKnownProperty(key)) {
-      const cssProp = paramCase(key);
+      const cssProp = convertToParamCase(key);
       cssArray.push(`${cssProp}: ${styles[key]};`);
     }
   }

@@ -13,3 +13,7 @@ export function getIntVal(prop: string | number) {
 
   return parseInt(prop);
 }
+
+export function convertToParamCase(str: string) {
+  return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+}
