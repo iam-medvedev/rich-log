@@ -13,7 +13,8 @@
     "example-react": "yarn workspace rich-log-react-example start",
     "example-preact": "yarn workspace rich-log-preact-example start",
     "postinstall": "husky install",
-    "commit": "yarn git-cz"
+    "commit": "yarn git-cz",
+    "release": "yarn workspace rich-log semantic-release"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",

@@ -26,10 +26,10 @@
   "module": "dist/module.js",
   "types": "dist/types.d.ts",
   "scripts": {
-    "build": "parcel build",
+    "build": "NODE_ENV=production parcel build",
     "dev": "parcel watch",
     "test": "jest --watch",
-    "test:ci": "jest --watch",
+    "test:ci": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
