@@ -1,0 +1,4 @@
+.yarn
+.parcel*
+.husky
+dist

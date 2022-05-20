@@ -32,7 +32,7 @@ function App() {
         }
       >
         <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
-          I'am log in group
+          I'am a text inside group
         </RichLog.Text>
         <RichLog.Box background="green" borderRadius="50%" width="20px" height="20px" separate />
         <RichLog.Text color="green" fontSize="20px" fontFamily="monospace" background="black">
