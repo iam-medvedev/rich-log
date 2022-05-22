@@ -10,6 +10,8 @@ React plugin for writing styled console logs using JSX.
 yarn add rich-log
 ```
 
+[Try it on CodeSandbox](https://codesandbox.io/s/silly-roman-3x7zcw?file=/src/App.tsx)
+
 ```tsx
 import RichLog from 'rich-log';
 
