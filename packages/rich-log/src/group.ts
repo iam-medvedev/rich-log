@@ -1,4 +1,10 @@
-import { JSXComponent, RichLogComponent, validateRichLogComponent } from './component';
+import {
+  JSXComponent,
+  RichLogComponent,
+  isRichLogComponent,
+  RichLogComponentLogResult,
+  RichLogFragmentResult,
+} from './component';
 import { Fragment } from './fragment';
 
 export type RichLogGroupProps = {
@@ -6,8 +12,16 @@ export type RichLogGroupProps = {
   children: JSXComponent | JSXComponent[];
 };
 
-export const Group: RichLogComponent<RichLogGroupProps> = ({ header, children }) => {
-  validateRichLogComponent(header);
+export const Group: RichLogComponent<RichLogGroupProps, RichLogFragmentResult> = ({ header, children }) => {
+  const headerResult: RichLogComponentLogResult = isRichLogComponent(header.type)
+    ? header.type(header.props)
+    : {
+        type: 'log',
+        text: [''],
+        styles: [''],
+        separate: false,
+      };
+
   const result = Fragment({ children });
 
   if (result.type !== 'fragment') {
@@ -16,6 +30,6 @@ export const Group: RichLogComponent<RichLogGroupProps> = ({ header, children })
 
   return {
     type: 'fragment',
-    childrens: [{ ...header.type(header.props), type: 'groupCollapsed' }, ...result.childrens, { type: 'groupEnd' }],
+    childrens: [{ ...headerResult, type: 'groupCollapsed' }, ...result.childrens, { type: 'groupEnd' }],
   };
 };

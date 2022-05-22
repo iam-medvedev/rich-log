@@ -1,17 +1,23 @@
 import type { StandardProperties } from 'csstype';
-import { RichLogComponent } from './component';
+import { JSXComponent, RichLogComponent, RichLogComponentLogResult } from './component';
+import { parseJSX } from './jsx';
 import { generateStyledString } from './styles';
 
 export type RichgLogSVGProps = {
   width: StandardProperties['width'];
   height: StandardProperties['height'];
-  value?: string;
   separate?: boolean;
+  children: JSXComponent;
 };
 
-export const SVG: RichLogComponent<RichgLogSVGProps> = ({ separate = false, value, width, height }) => {
-  // TODO: parse <svg> instead of using raw svg
-  const svgDataUrl = `data:image/svg+xml;base64,${window.btoa(value)}`;
+export const SVG: RichLogComponent<RichgLogSVGProps, RichLogComponentLogResult> = ({
+  separate = false,
+  children,
+  width,
+  height,
+}) => {
+  const rawSvg = parseJSX(children);
+  const svgDataUrl = `data:image/svg+xml;base64,${window.btoa(rawSvg)}`;
 
   const { text, styles } = generateStyledString(' ', {
     fontSize: '1px',

@@ -1,10 +1,16 @@
-import { JSXComponent, RichLogComponent, RichLogComponentResult, validateRichLogComponent } from './component';
+import {
+  JSXComponent,
+  RichLogComponent,
+  RichLogComponentResult,
+  isRichLogComponent,
+  RichLogFragmentResult,
+} from './component';
 
 export type RichLogFragmentProps = {
   children?: JSXComponent | JSXComponent[];
 };
 
-export const Fragment: RichLogComponent<RichLogFragmentProps> = ({ children }) => {
+export const Fragment: RichLogComponent<RichLogFragmentProps, RichLogFragmentResult> = ({ children }) => {
   const result: RichLogComponentResult[] = [];
 
   /** Merge multiple logs */
@@ -26,12 +32,15 @@ export const Fragment: RichLogComponent<RichLogFragmentProps> = ({ children }) =
 
   if (Array.isArray(children)) {
     for (const child of children) {
-      validateRichLogComponent(child);
-      pushItems(child.type(child.props));
+      if (isRichLogComponent(child.type)) {
+        pushItems(child.type(child.props));
+      }
     }
   } else {
-    validateRichLogComponent(children);
-    pushItems(children.type(children.props));
+    isRichLogComponent(children);
+    if (isRichLogComponent(children.type)) {
+      pushItems(children.type(children.props));
+    }
   }
 
   return {

@@ -1,4 +1,4 @@
-import { JSXComponent, RichLogComponentResult, validateRichLogComponent } from './component';
+import { JSXComponent, RichLogComponentResult, isRichLogComponent } from './component';
 
 function generateLog(item: RichLogComponentResult) {
   switch (item.type) {
@@ -31,8 +31,8 @@ function generateLog(item: RichLogComponentResult) {
 
 /** Rich Log */
 export function log(content: JSXComponent) {
-  validateRichLogComponent(content);
-
-  const result = content.type(content.props);
-  generateLog(result);
+  if (isRichLogComponent(content.type)) {
+    const result = content.type(content.props);
+    generateLog(result);
+  }
 }

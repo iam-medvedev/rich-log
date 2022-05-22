@@ -1,4 +1,4 @@
-import type { RichLogComponent } from './component';
+import type { RichLogComponent, RichLogComponentLogResult } from './component';
 import { generateStyledString, RichLogStyles } from './styles';
 
 export type RichLogTextProps = RichLogStyles & {
@@ -6,7 +6,11 @@ export type RichLogTextProps = RichLogStyles & {
   separate?: boolean;
 };
 
-export const Text: RichLogComponent<RichLogTextProps> = ({ children, separate = false, ...objectStyles }) => {
+export const Text: RichLogComponent<RichLogTextProps, RichLogComponentLogResult> = ({
+  children,
+  separate = false,
+  ...objectStyles
+}) => {
   const { text, styles } = generateStyledString(children, objectStyles);
 
   return {
