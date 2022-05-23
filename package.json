@@ -6,6 +6,7 @@
   "packageManager": "yarn@3.2.1",
   "scripts": {
     "build": "yarn workspace rich-log build",
+    "minify": "yarn workspace rich-log minify-js && yarn workspace rich-log minify-module",
     "dev": "yarn workspace rich-log dev",
     "test": "yarn workspace rich-log test",
     "test:ci": "yarn workspace rich-log test:ci",

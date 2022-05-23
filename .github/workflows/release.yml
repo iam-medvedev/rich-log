@@ -21,6 +21,9 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Minification
+        run: yarn minify
+
       - name: Copy readme
         run: cp -R ./README.md ./readme-assets ./packages/rich-log/
 

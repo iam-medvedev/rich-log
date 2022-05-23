@@ -28,6 +28,8 @@
   "types": "dist/types.d.ts",
   "scripts": {
     "build": "NODE_ENV=production parcel build",
+    "minify-js": "uglifyjs --compress --mangle --source-map \"url='main.js.map'\" --output ./dist/main.js -- ./dist/main.js",
+    "minify-module": "uglifyjs --compress --mangle --source-map \"url='module.js.map'\" --output ./dist/module.js -- ./dist/module.js",
     "dev": "parcel watch",
     "test": "jest --watch",
     "test:ci": "jest",
@@ -49,6 +51,7 @@
     "@types/eslint": "^8",
     "@types/jest": "^27.5.1",
     "@types/prettier": "^2",
+    "@types/uglify-js": "^3",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "eslint": "^8.15.0",
@@ -59,6 +62,7 @@
     "parcel": "latest",
     "semantic-release": "^19.0.2",
     "ts-jest": "^28.0.2",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "uglify-js": "^3.15.5"
   }
 }

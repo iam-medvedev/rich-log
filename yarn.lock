@@ -2453,6 +2453,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uglify-js@npm:^3":
+  version: 3.13.2
+  resolution: "@types/uglify-js@npm:3.13.2"
+  dependencies:
+    source-map: ^0.6.1
+  checksum: 361e734404f23c9877edc51430e14e6f731124a4ba7590f0f584de35e3d084ac4f77bbcc5d17a69124d38f94f0d7a59992eb6a2dddaa6f6270df052ce2b6dc06
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.0
   resolution: "@types/yargs-parser@npm:21.0.0"
@@ -8568,6 +8577,7 @@ __metadata:
     "@types/eslint": ^8
     "@types/jest": ^27.5.1
     "@types/prettier": ^2
+    "@types/uglify-js": ^3
     "@typescript-eslint/eslint-plugin": ^5.25.0
     "@typescript-eslint/parser": ^5.25.0
     csstype: ^3.1.0
@@ -8580,6 +8590,7 @@ __metadata:
     semantic-release: ^19.0.2
     ts-jest: ^28.0.2
     typescript: ^4.6.4
+    uglify-js: ^3.15.5
   languageName: unknown
   linkType: soft
 
@@ -9668,7 +9679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uglify-js@npm:^3.1.4":
+"uglify-js@npm:^3.1.4, uglify-js@npm:^3.15.5":
   version: 3.15.5
   resolution: "uglify-js@npm:3.15.5"
   bin:
