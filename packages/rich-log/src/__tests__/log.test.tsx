@@ -1,8 +1,16 @@
-/**
- * @jest-environment jsdom
- */
-import * as utils from '../utils';
+import nock from 'nock';
 import RichLog from '../';
+
+jest.spyOn(FileReader.prototype, 'readAsDataURL').mockImplementation(async function (blob: Blob) {
+  const buffer = Buffer.from(await blob.arrayBuffer());
+  const base64url = `data:${blob.type};base64,${buffer.toString('base64')}`;
+
+  this.onload({
+    target: {
+      result: base64url,
+    },
+  });
+});
 
 const text = 'hello world';
 const styles = {
@@ -14,13 +22,10 @@ const styles = {
 const compiledText = `%c${text}`;
 const compiledStyles = `color: ${styles.color}; background: ${styles.background}; border-radius: ${styles.borderRadius};`;
 
-const base64Img = 'base-64-img';
-
 const logMock = jest.fn();
 const tableMock = jest.fn();
 const groupCollapsedMock = jest.fn();
 const groupEndMock = jest.fn();
-jest.spyOn(utils, 'getBase64Image').mockResolvedValue(base64Img);
 
 global.console = {
   ...global.console,
@@ -35,6 +40,12 @@ beforeEach(() => {
   tableMock.mockReset();
   groupCollapsedMock.mockReset();
   groupEndMock.mockReset();
+});
+
+beforeAll(() => {
+  nock('http://example.img').get('/test.png').replyWithFile(200, `${__dirname}/test.png`, {
+    'Content-Type': 'image/png',
+  });
 });
 
 it('Text', async () => {
@@ -139,10 +150,10 @@ it('SVG', async () => {
 });
 
 it('Img', async () => {
-  await RichLog.log(<RichLog.Img height="60px" width="60px" src="./test.png" />);
+  await RichLog.log(<RichLog.Img height="60px" width="60px" src="http://example.img/test.png" />);
 
   expect(logMock).toBeCalledWith(
     '%c ',
-    `font-size: 1px; background-image: url('base-64-img'); background-size: contain; background-position: center center; background-repeat: no-repeat; padding-top: 60px; padding-right: 60px;`,
+    `font-size: 1px; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWBAMAAADOL2zRAAAAG1BMVEXMzMyWlpaqqqq3t7fFxcW+vr6xsbGjo6OcnJyLKnDGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAElEQVRoge3SMW+DMBiE4YsxJqMJtHOTITPeOsLQnaodGImEUMZEkZhRUqn92f0MaTubtfeMh/QGHANEREREREREREREtIJJ0xbH299kp8l8FaGtLdTQ19HjofxZlJ0m1+eBKZcikd9PWtXC5DoDotRO04B9YOvFIXmXLy2jEbiqE6Df7DTleA5socLqvEFVxtJyrpZFWz/pHM2CVte0lS8g2eDe6prOyqPglhzROL+Xye4tmT4WvRcQ2/m81p+/rdguOi8Hc5L/8Qk4vhZzy08DduGt9eVQyP2qoTM1zi0/uf4hvBWf5c77e69Gf798y08L7j0RERERERERERH9P99ZpSVRivB/rgAAAABJRU5ErkJggg=='); background-size: contain; background-position: center center; background-repeat: no-repeat; padding-top: 60px; padding-right: 60px;`,
   );
 });

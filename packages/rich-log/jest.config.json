@@ -1,5 +1,7 @@
 {
   "transform": {
     "^.+\\.(ts|tsx)$": "ts-jest"
-  }
+  },
+  "setupFiles": ["./jest.setup.ts"],
+  "testEnvironment": "jsdom"
 }

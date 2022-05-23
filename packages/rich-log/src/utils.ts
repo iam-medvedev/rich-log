@@ -23,7 +23,11 @@ export async function getDataUrlFromBlob(blob: Blob): Promise<string> {
     const file = new FileReader();
 
     file.onload = (e) => {
-      resolve(e.target.result as string);
+      if (typeof e.target.result === 'string') {
+        return resolve(e.target.result);
+      }
+
+      reject();
     };
 
     file.onerror = () => {

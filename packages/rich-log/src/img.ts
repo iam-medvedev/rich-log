@@ -37,6 +37,7 @@ export const Img: RichLogComponent<RichgLogImgProps, RichLogComponentLogResult> 
   try {
     str = await getBase64Image(src);
   } catch (e) {
+    console.error(e);
     throw new Error(`[RichLog] Cannot get image from: ${src}`);
   }
 
