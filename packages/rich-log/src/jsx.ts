@@ -18,12 +18,9 @@ export function parseJSX(component: JSXComponent, returnElement = false): Elemen
     }
 
     if (component.props.children) {
-      if (Array.isArray(component.props.children)) {
-        for (const child of component.props.children) {
-          element.appendChild(parseJSX(child, true));
-        }
-      } else {
-        element.appendChild(parseJSX(component.props.children, true));
+      const childrens = Array.isArray(component.props.children) ? component.props.children : [component.props.children];
+      for (const child of childrens) {
+        element.appendChild(parseJSX(child, true));
       }
     }
 

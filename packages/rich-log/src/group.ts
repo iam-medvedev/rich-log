@@ -12,9 +12,9 @@ export type RichLogGroupProps = {
   children: JSXComponent | JSXComponent[];
 };
 
-export const Group: RichLogComponent<RichLogGroupProps, RichLogFragmentResult> = ({ header, children }) => {
+export const Group: RichLogComponent<RichLogGroupProps, RichLogFragmentResult> = async ({ header, children }) => {
   const headerResult: RichLogComponentLogResult = isRichLogComponent(header.type)
-    ? header.type(header.props)
+    ? await header.type(header.props)
     : {
         type: 'log',
         text: [''],
@@ -22,7 +22,7 @@ export const Group: RichLogComponent<RichLogGroupProps, RichLogFragmentResult> =
         separate: false,
       };
 
-  const result = Fragment({ children });
+  const result = await Fragment({ children });
 
   if (result.type !== 'fragment') {
     throw new Error('[RichLog] Only Fragment should be used as Group content');

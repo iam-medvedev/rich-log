@@ -4,6 +4,7 @@ import { Table } from './table';
 import { Fragment } from './fragment';
 import { Box } from './box';
 import { SVG } from './svg';
+import { Img } from './img';
 
 export type RichLogComponentLogResult = { type: 'log'; separate: boolean; text: string[]; styles: string[] };
 export type RichLogGroupCollapsedResult = { type: 'groupCollapsed'; text: string[]; styles: string[] };
@@ -18,14 +19,14 @@ export type RichLogComponentResult =
   | RichLogTableResult
   | RichLogFragmentResult;
 
-export type RichLogComponent<Props = {}, Result = RichLogComponentResult> = (props: Props) => Result;
+export type RichLogComponent<Props = {}, Result = RichLogComponentResult> = (props: Props) => Promise<Result>;
 
 export type JSXComponent = {
   type: Function | string;
   props: Record<string, unknown> & { children?: JSXComponent | JSXComponent[] };
 };
 
-const knownComponents: Function[] = [Text, Group, Table, Fragment, Box, SVG];
+const knownComponents: Function[] = [Text, Group, Table, Fragment, Box, SVG, Img];
 
 /** Determines if the component is a RichLog instance. */
 export function isRichLogComponent(component: unknown): component is Function {

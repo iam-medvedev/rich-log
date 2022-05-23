@@ -10,7 +10,7 @@ export type RichLogFragmentProps = {
   children?: JSXComponent | JSXComponent[];
 };
 
-export const Fragment: RichLogComponent<RichLogFragmentProps, RichLogFragmentResult> = ({ children }) => {
+export const Fragment: RichLogComponent<RichLogFragmentProps, RichLogFragmentResult> = async ({ children }) => {
   const result: RichLogComponentResult[] = [];
 
   /** Merge multiple logs */
@@ -33,13 +33,12 @@ export const Fragment: RichLogComponent<RichLogFragmentProps, RichLogFragmentRes
   if (Array.isArray(children)) {
     for (const child of children) {
       if (isRichLogComponent(child.type)) {
-        pushItems(child.type(child.props));
+        pushItems(await child.type(child.props));
       }
     }
   } else {
-    isRichLogComponent(children);
     if (isRichLogComponent(children.type)) {
-      pushItems(children.type(children.props));
+      pushItems(await children.type(children.props));
     }
   }
 

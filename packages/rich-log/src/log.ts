@@ -1,6 +1,6 @@
 import { JSXComponent, RichLogComponentResult, isRichLogComponent } from './component';
 
-function generateLog(item: RichLogComponentResult) {
+async function generateLog(item: RichLogComponentResult) {
   switch (item.type) {
     case 'groupCollapsed':
       console.groupCollapsed(item.text.join(''), ...item.styles);
@@ -20,7 +20,7 @@ function generateLog(item: RichLogComponentResult) {
 
     case 'fragment':
       for (const children of item.childrens) {
-        generateLog(children);
+        await generateLog(children);
       }
       break;
 
@@ -30,9 +30,9 @@ function generateLog(item: RichLogComponentResult) {
 }
 
 /** Rich Log */
-export function log(content: JSXComponent) {
+export async function log(content: JSXComponent) {
   if (isRichLogComponent(content.type)) {
-    const result = content.type(content.props);
-    generateLog(result);
+    const result = await content.type(content.props);
+    await generateLog(result);
   }
 }

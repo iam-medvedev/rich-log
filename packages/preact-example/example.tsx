@@ -77,6 +77,20 @@ function App() {
     );
   }
 
+  function sendImg() {
+    RichLog.log(
+      <RichLog.Fragment>
+        <RichLog.Img
+          height="60px"
+          width="60px"
+          src="https://c.tenor.com/fFntTHJYFPMAAAAC/random.gif"
+          marginRight="8px"
+        />
+        <RichLog.Img height="60px" width="60px" src="https://picsum.photos/120/120" />
+      </RichLog.Fragment>,
+    );
+  }
+
   return (
     <>
       <h1>React Example</h1>
@@ -84,6 +98,7 @@ function App() {
       <button onClick={sendTextLog}>Send styled console.log</button>
       <button onClick={sendGroupLog}>Send styled console.group</button>
       <button onClick={sendSVG}>Send console.log with SVG-icon</button>
+      <button onClick={sendImg}>Send console.log with gif + png</button>
       <button onClick={sendTableLog}>Send console.table</button>
 
       {isClicked ? (

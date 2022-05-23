@@ -6,7 +6,7 @@ export type RichLogTextProps = RichLogStyles & {
   separate?: boolean;
 };
 
-export const Text: RichLogComponent<RichLogTextProps, RichLogComponentLogResult> = ({
+export const Text: RichLogComponent<RichLogTextProps, RichLogComponentLogResult> = async ({
   children,
   separate = false,
   ...objectStyles

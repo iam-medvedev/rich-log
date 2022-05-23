@@ -71,7 +71,7 @@ RichLog.log(
 
 Output:
 
-<img alt="rich-log preview" width="130" src="./readme-assets/2.png" />
+<img alt="rich-log text component output" width="130" src="./readme-assets/2.png" />
 
 ### `<RichLog.Fragment />`
 
@@ -88,7 +88,7 @@ RichLog.log(
 
 Output:
 
-<img alt="rich-log preview" width="184" src="./readme-assets/3.png" />
+<img alt="rich-log fragment component output" width="184" src="./readme-assets/3.png" />
 
 If you want to separate text lines, you use the `separate`-prop:
 
@@ -103,7 +103,7 @@ RichLog.log(
 
 Output:
 
-<img alt="rich-log preview" width="120" src="./readme-assets/4.png" />
+<img alt="rich-log separate text component output" width="120" src="./readme-assets/4.png" />
 
 ### `<RichLog.Table />`
 
@@ -115,7 +115,7 @@ RichLog.log(<RichLog.Table data={{ foo: true, bar: 1 }} />);
 
 Output:
 
-<img alt="rich-log preview" width="487" src="./readme-assets/5.png" />
+<img alt="rich-log table component output" width="487" src="./readme-assets/5.png" />
 
 ### `<RichLog.Group />`
 
@@ -137,7 +137,24 @@ RichLog.log(
 
 Output:
 
-<img alt="rich-log preview" width="221" src="./readme-assets/6.png" />
+<img alt="rich-log group component output" width="221" src="./readme-assets/6.png" />
+
+### `<RichLog.Img />`
+
+Component for rendering images and gifs.
+
+```tsx
+RichLog.log(
+  <RichLog.Fragment>
+    <RichLog.Img height="60px" width="60px" src="https://c.tenor.com/fFntTHJYFPMAAAAC/random.gif" marginRight="8px" />
+    <RichLog.Img height="60px" width="60px" src="https://picsum.photos/120/120" />
+  </RichLog.Fragment>,
+);
+```
+
+Output:
+
+<img alt="rich-log img component output" width="177" src="./readme-assets/8.gif" />
 
 ### `<RichLog.SVG />`
 
@@ -167,11 +184,26 @@ RichLog.log(
 
 Output:
 
-<img alt="rich-log preview" width="107" src="./readme-assets/7.png" />
+<img alt="rich-log svg component output" width="107" src="./readme-assets/7.png" />
+
+### `<RichLog.Box />`
+
+Component for rendering boxes.
+
+```tsx
+RichLog.log(
+  <RichLog.Fragment>
+    <RichLog.Box background="red" borderRadius="50%" width="20px" height="20px" marginRight="4px" />
+    <RichLog.Box background="yellow" borderRadius="50%" width="20px" height="20px" marginRight="4px" />
+    <RichLog.Box background="green" borderRadius="50%" width="20px" height="20px" />
+  </RichLog.Fragment>,
+);
+```
+
+<img alt="rich-log svg component output" width="119" src="./readme-assets/9.png" />
 
 ## TODO
 
-- [ ] Images
 - [ ] Safari support
 - [ ] Styled tables
 

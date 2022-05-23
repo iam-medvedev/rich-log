@@ -1,20 +1,19 @@
-import type { StandardProperties } from 'csstype';
+import type { RichLogImgStyles } from './img';
 import { JSXComponent, RichLogComponent, RichLogComponentLogResult } from './component';
 import { parseJSX } from './jsx';
 import { generateStyledString } from './styles';
 
-export type RichgLogSVGProps = {
-  width: StandardProperties['width'];
-  height: StandardProperties['height'];
+export type RichgLogSVGProps = RichLogImgStyles & {
   separate?: boolean;
   children: JSXComponent;
 };
 
-export const SVG: RichLogComponent<RichgLogSVGProps, RichLogComponentLogResult> = ({
+export const SVG: RichLogComponent<RichgLogSVGProps, RichLogComponentLogResult> = async ({
   separate = false,
   children,
   width,
   height,
+  ...stylesObject
 }) => {
   const rawSvg = parseJSX(children);
   const svgDataUrl = `data:image/svg+xml;base64,${window.btoa(rawSvg)}`;
@@ -27,6 +26,7 @@ export const SVG: RichLogComponent<RichgLogSVGProps, RichLogComponentLogResult> 
     backgroundRepeat: 'no-repeat',
     paddingTop: height,
     paddingRight: width,
+    ...stylesObject,
   });
 
   return {

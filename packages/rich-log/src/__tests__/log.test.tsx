@@ -1,12 +1,26 @@
 /**
  * @jest-environment jsdom
  */
+import * as utils from '../utils';
 import RichLog from '../';
+
+const text = 'hello world';
+const styles = {
+  color: 'green',
+  background: '#000',
+  borderRadius: '8px',
+};
+
+const compiledText = `%c${text}`;
+const compiledStyles = `color: ${styles.color}; background: ${styles.background}; border-radius: ${styles.borderRadius};`;
+
+const base64Img = 'base-64-img';
 
 const logMock = jest.fn();
 const tableMock = jest.fn();
 const groupCollapsedMock = jest.fn();
 const groupEndMock = jest.fn();
+jest.spyOn(utils, 'getBase64Image').mockResolvedValue(base64Img);
 
 global.console = {
   ...global.console,
@@ -23,25 +37,15 @@ beforeEach(() => {
   groupEndMock.mockReset();
 });
 
-const text = 'hello world';
-const styles = {
-  color: 'green',
-  background: '#000',
-  borderRadius: '8px',
-};
-
-const compiledText = `%c${text}`;
-const compiledStyles = `color: ${styles.color}; background: ${styles.background}; border-radius: ${styles.borderRadius};`;
-
-it('Text', () => {
-  RichLog.log(<RichLog.Text {...styles}>{text}</RichLog.Text>);
+it('Text', async () => {
+  await RichLog.log(<RichLog.Text {...styles}>{text}</RichLog.Text>);
 
   expect(logMock).toBeCalledTimes(1);
   expect(logMock).toBeCalledWith(compiledText, compiledStyles);
 });
 
-it('Fragment + Text (multiple)', () => {
-  RichLog.log(
+it('Fragment + Text (multiple)', async () => {
+  await RichLog.log(
     <RichLog.Fragment>
       <RichLog.Text {...styles}>{text}</RichLog.Text>
       <RichLog.Text {...styles}>{text}</RichLog.Text>
@@ -52,8 +56,8 @@ it('Fragment + Text (multiple)', () => {
   expect(logMock).toBeCalledWith(`${compiledText}${compiledText}`, compiledStyles, compiledStyles);
 });
 
-it('Fragment + Text (first separate)', () => {
-  RichLog.log(
+it('Fragment + Text (first separate)', async () => {
+  await RichLog.log(
     <RichLog.Fragment>
       <RichLog.Text {...styles} separate>
         {text}
@@ -67,8 +71,8 @@ it('Fragment + Text (first separate)', () => {
   expect(logMock).toHaveBeenNthCalledWith(2, compiledText, compiledStyles);
 });
 
-it('Fragment + Text (second separate)', () => {
-  RichLog.log(
+it('Fragment + Text (second separate)', async () => {
+  await RichLog.log(
     <RichLog.Fragment>
       <RichLog.Text {...styles}>{text}</RichLog.Text>
       <RichLog.Text {...styles} separate>
@@ -82,8 +86,8 @@ it('Fragment + Text (second separate)', () => {
   expect(logMock).toHaveBeenNthCalledWith(2, compiledText, compiledStyles);
 });
 
-it('Group + Text', () => {
-  RichLog.log(
+it('Group + Text', async () => {
+  await RichLog.log(
     <RichLog.Group header={<RichLog.Text {...styles}>{text}</RichLog.Text>}>
       <RichLog.Text {...styles}>{text}</RichLog.Text>
       <RichLog.Text {...styles}>{text}</RichLog.Text>
@@ -96,19 +100,19 @@ it('Group + Text', () => {
   expect(groupEndMock).toBeCalledTimes(1);
 });
 
-it('Table', () => {
+it('Table', async () => {
   const data = [
     { type: 'Boolean', value: true },
     { type: 'String', value: 'string' },
     { type: 'Number', value: 1 },
     { type: 'Object', value: { test: 'object test' } },
   ];
-  RichLog.log(<RichLog.Table data={data} />);
+  await RichLog.log(<RichLog.Table data={data} />);
   expect(tableMock).toBeCalledWith(data);
 });
 
-it('SVG', () => {
-  RichLog.log(
+it('SVG', async () => {
+  await RichLog.log(
     <RichLog.SVG height="60px" width="60px">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -131,5 +135,14 @@ it('SVG', () => {
   expect(logMock).toBeCalledWith(
     '%c ',
     "font-size: 1px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBzdHJva2U9IndoaXRlIiBzdHJva2VXaWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIHN0cm9rZUxpbmVqb2luPSJyb3VuZCI+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJNMTAuMjkgMy44NkwxLjgyIDE4YTIgMiAwIDAgMCAxLjcxIDNoMTYuOTRhMiAyIDAgMCAwIDEuNzEtM0wxMy43MSAzLjg2YTIgMiAwIDAgMC0zLjQyIDB6Ij48L3BhdGg+PGxpbmUgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4MT0iMTIiIHkxPSI5IiB4Mj0iMTIiIHkyPSIxMyI+PC9saW5lPjxsaW5lIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeDE9IjEyIiB5MT0iMTciIHgyPSIxMi4wMSIgeTI9IjE3Ij48L2xpbmU+PC9zdmc+'); background-size: contain; background-position: center center; background-repeat: no-repeat; padding-top: 60px; padding-right: 60px;",
+  );
+});
+
+it('Img', async () => {
+  await RichLog.log(<RichLog.Img height="60px" width="60px" src="./test.png" />);
+
+  expect(logMock).toBeCalledWith(
+    '%c ',
+    `font-size: 1px; background-image: url('base-64-img'); background-size: contain; background-position: center center; background-repeat: no-repeat; padding-top: 60px; padding-right: 60px;`,
   );
 });
