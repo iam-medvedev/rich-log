@@ -24,6 +24,9 @@
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1"
   },
+  "resolutions": {
+    "minimist": "^1.2.6"
+  },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
