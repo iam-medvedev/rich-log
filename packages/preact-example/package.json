@@ -6,10 +6,10 @@
   "devDependencies": {
     "@parcel/core": "latest",
     "parcel": "latest",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "preact": "^10.7.2"
+    "preact": "^10.8.1"
   },
   "alias": {
     "react": "preact/compat",

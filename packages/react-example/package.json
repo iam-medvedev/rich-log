@@ -6,16 +6,16 @@
   "devDependencies": {
     "@parcel/core": "latest",
     "parcel": "latest",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.4"
   },
   "resolutions": {
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4"
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5"
   },
   "dependencies": {
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
